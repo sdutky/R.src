@@ -1,0 +1,2 @@
+#execute or add line to .Rprofile
+source("https://github.com/sdutky/R.src/raw/master/sourceAllGitHub")
