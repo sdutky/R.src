@@ -1,4 +1,11 @@
 #$Log: qw.R,v $
+#Revision 1.8  2020/03/03 01:09:52  dutky
+#handling of lists with strings of ='s now arguably consistent
+#
+#Revision 1.7  2020/03/03 00:20:37  dutky
+#fixed bug with list=1rstElement, multiple sequential ='s
+#still squirely.
+#
 #Revision 1.6  2020/01/12 03:26:12  dutky
 #simple stupid parsing of list names & values
 #
@@ -118,6 +125,9 @@ qw<-function(string,what=character,dim=FALSE,sep="",quiet=FALSE,qwCode=FALSE) {
 	# there are exceptions:
 	#  v[1]=="=.*", v[.-1]==".*=.*",v[.]="=.*] ; etc.
 
+	# browser()
+	if (!(any(grepl("^(=.*|.*=)$",v)))) return(v)
+
 	prev<-""
 	i<-1
 	cuts<-c()
@@ -132,9 +142,10 @@ qw<-function(string,what=character,dim=FALSE,sep="",quiet=FALSE,qwCode=FALSE) {
 			v[i]<-tok
 			skipPrev<-TRUE
 			cuts<-c(cuts,i-1)
-		}
+		} 
 
-		if ( any(grepl("^[^=]*=$",tok))) {
+		#if ( any(grepl("^[^=]*=$",tok))) {
+		if ( any(grepl("=$",tok))) {
 			tok<-paste(tok,nextTok,sep="")
 			v[i]<-tok
 			skipPrev<-TRUE
