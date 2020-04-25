@@ -1,4 +1,6 @@
 #Source all R functions from https://github.com/sdutky/R.src/
-if (!exists("camelCase")) source("https://github.com/sdutky/R.src/raw/master/camelCase/camelCase.R")
-if (!exists("qw")) source("https://github.com/sdutky/R.src/raw/master/qw/qw.R")
-if (!exists("tsSummary")) source("https://github.com/sdutky/R.src/raw/master/tSummary/tSummary.R")
+source("https://github.com/sdutky/R.src/raw/master/camelCase/camelCase.R")
+source("https://github.com/sdutky/R.src/raw/master/qw/qw.R")
+source("https://github.com/sdutky/R.src/raw/master/tSummary/tSummary.R")
+source("https://github.com/sdutky/R.src/raw/master/f/f.R")
+source("https://github.com/sdutky/R.src/raw/master/g/g.R")
